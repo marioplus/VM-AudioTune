@@ -13,8 +13,7 @@
 ## 🧩 使用方法
 
 ### 1. 设置 VoiceMeeter 进程名称
-
-> **注意**：  
+ 
 > 打开任务管理器 > 切换到“详细信息”选项卡 > 找到 `voicemeeterpro.exe` 或类似进程 > 右键 > 属性 > 复制进程名称（**去掉 `.exe` 后缀**）。
 
 1. 打开 `VoiceMeeter-Monitor.ps1`；
