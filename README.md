@@ -8,7 +8,7 @@
 | -------------------------------- | ------------------------------------------------------ |
 | `VoiceMeeter-Monitor.ps1`        | 主监控脚本：检测 `voicemeeterpro.exe` 并设置为高优先级 |
 | `VoiceMeeter-StartupManager.ps1` | 启动管理脚本：创建/删除开机自启快捷方式                |
-| `Convert-ToUTF8BOM.ps1`          | 将上面的两个脚本hzuan码为UTF-8编码并添加UTF-8 BOM头    |
+| `Convert-ToUTF8BOM.ps1`          | 将上面的两个脚本转化为UTF-8编码并添加UTF-8 BOM头（否则开机自启动脚本提示会乱码）    |
 
 ## 🧩 使用方法
 
