@@ -26,10 +26,11 @@
 
 ### 2. 手动运行主脚本
 
-双击运行 `VoiceMeeter-Monitor.ps1`，它会：
+双击运行 `VM-AudioTune.ps1`，它会：
 
-- 等待 Voicemeeter 启动；
+- 等待 Voicemeeter/AudioDG 启动；
 - 成功检测后自动设置其进程为“高优先级”；
+- 在多核cup设置线程隔离
 - 若未在 5 分钟内检测到目标进程，会弹出提示。
 
 ### 3. 添加/删除开机启动项
