@@ -1,6 +1,6 @@
 # 🎤 Voicemeeter 高优先级设置工具
 
-该项目包含两个 PowerShell 脚本，用于帮助你在启动 Voicemeeter 时自动将其进程优先级设为“高”，一定程度上缓解爆音问题。
+该项目包含两个 PowerShell 脚本，用于帮助你在启动 Voicemeeter/AudioDG 时自动将其进程优先级设为“高”，一定程度上缓解爆音问题。
 
 ## 📁 文件说明
 
@@ -19,7 +19,7 @@
 1. 打开 `VoiceMeeter-Monitor.ps1`；
 2. 找到以下行：
    ```powershell
-   [string]$TargetProcessName = "voicemeeterpro"
+   [string]$VoiceMeeterProcessName = "voicemeeterpro"
 3. 将 `voicemeeterpro` 替换为步骤 2 中复制的进程名称。
 4. 保存文件。
 5. 双击运行`Convert-ToUTF8BOM.ps1` 将脚本转化为 `UTF-8 with BOM` 编码格式（否则开机自启动脚本提示会乱码）。
