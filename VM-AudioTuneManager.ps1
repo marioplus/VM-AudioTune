@@ -31,12 +31,6 @@ function EnableStartupShortcut {
         $shortcut.Description = "VoiceMeeter-Monitor"
         $shortcut.Save()
 
-        # 设置管理员权限运行
-        $bytes = [System.IO.File]::ReadAllBytes($ShortcutFilePath)
-        # 设置runas标志位
-        $bytes[0x15] = $bytes[0x15] -bor 0x20
-        [System.IO.File]::WriteAllBytes($ShortcutFilePath, $bytes)
-
         Write-Host  "已添加开机启动项"
     }
     catch {
