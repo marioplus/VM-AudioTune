@@ -6,7 +6,7 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 # 获取当前脚本所在目录和系统启动文件夹路径
 [string]$ScriptDirectory = $PSScriptRoot
 [string]$StartupFolderPath = [Environment]::GetFolderPath("Startup")
-[string]$ScriptName = "VoiceMeeter-Monitor"
+[string]$ScriptName = "VM-AudioTune"
 [string]$MainScriptPath = Join-Path -Path $ScriptDirectory -ChildPath "$ScriptName.ps1"
 [string]$ShortcutFilePath = Join-Path -Path $StartupFolderPath -ChildPath "$ScriptName.lnk"
 
@@ -26,9 +26,16 @@ function EnableStartupShortcut {
         $WshShell = New-Object -ComObject WScript.Shell
         $shortcut = $WshShell.CreateShortcut($ShortcutFilePath)
         $shortcut.TargetPath = "powershell.exe"
-        $shortcut.Arguments = "-WindowStyle Hidden -ExecutionPolicy Bypass -File `"$MainScriptPath`""
+        $shortcut.Arguments = "-NoProfile -ExecutionPolicy Bypass -File `"$MainScriptPath`""
         $shortcut.WorkingDirectory = $ScriptDirectory
+        $shortcut.Description = "VoiceMeeter-Monitor"
         $shortcut.Save()
+
+        # 设置管理员权限运行
+        $bytes = [System.IO.File]::ReadAllBytes($ShortcutFilePath)
+        # 设置runas标志位
+        $bytes[0x15] = $bytes[0x15] -bor 0x20
+        [System.IO.File]::WriteAllBytes($ShortcutFilePath, $bytes)
 
         Write-Host  "已添加开机启动项"
     }

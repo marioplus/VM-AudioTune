@@ -5,7 +5,7 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 
 # 设置目标文件夹路径
 $Dir = $PSScriptRoot
-$Paths = @("VoiceMeeter-Monitor.ps1", "VoiceMeeter-StartupManager.ps1")
+$Paths = @("VM-AudioTune.ps1", "VM-AudioTuneManager.ps1​")
 
 # 显示消息框函数
 function Show-UserMessage {

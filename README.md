@@ -4,11 +4,11 @@
 
 ## 📁 文件说明
 
-| 文件名                           | 功能描述                                               |
-| -------------------------------- | ------------------------------------------------------ |
-| `VoiceMeeter-Monitor.ps1`        | 主监控脚本：检测 `voicemeeterpro.exe` 并设置为高优先级 |
-| `VoiceMeeter-StartupManager.ps1` | 启动管理脚本：创建/删除开机自启快捷方式                |
-| `Convert-ToUTF8BOM.ps1`          | 将上面的两个脚本转化为UTF-8编码并添加UTF-8 BOM头（否则开机自启动脚本提示会乱码）    |
+| 文件名                     | 功能描述                                                                         |
+| -------------------------- | -------------------------------------------------------------------------------- |
+| `VM-AudioTune.ps1`         | 主监控脚本：检测 `voicemeeterpro.exe` 并设置为高优先级                           |
+| `VM-AudioTuneManager.ps1​` | 启动管理脚本：创建/删除开机自启快捷方式                                          |
+| `Convert-ToUTF8BOM.ps1`    | 将上面的两个脚本转化为UTF-8编码并添加UTF-8 BOM头（否则开机自启动脚本提示会乱码） |
 
 ## 🧩 使用方法
 
@@ -16,7 +16,7 @@
  
 > 打开任务管理器 > 切换到“详细信息”选项卡 > 找到 `voicemeeterpro.exe` 或类似进程 > 右键 > 属性 > 复制进程名称（**去掉 `.exe` 后缀**）。
 
-1. 打开 `VoiceMeeter-Monitor.ps1`；
+1. 打开 `VM-AudioTune.ps1`；
 2. 找到以下行：
    ```powershell
    [string]$VoiceMeeterProcessName = "voicemeeterpro"
@@ -32,9 +32,9 @@
 - 成功检测后自动设置其进程为“高优先级”；
 - 若未在 5 分钟内检测到目标进程，会弹出提示。
 
-### 3. 添加开机启动项
+### 3. 添加/删除开机启动项
 
-运行 `VoiceMeeter-StartupManager.ps1`：
+运行 `VM-AudioTuneManager.ps1​`：
 
 - 如果没有快捷方式 → 自动创建；
 - 如果已有快捷方式 → 自动删除；

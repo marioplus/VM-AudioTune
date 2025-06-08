@@ -3,6 +3,9 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 [Console]::OutputEncoding = $OutputEncoding
 [Console]::InputEncoding = $OutputEncoding
 
+# 设置窗口标题
+$Host.UI.RawUI.WindowTitle = "VoiceMeeter Monitor"
+
 # 目标进程名称（不带 .exe）
 # 任务管理器 > 详细信息 > 找到进程 > 右键 > 属性 > 复制名称(去掉 .exe)
 [string]$VoiceMeeterProcessName = "voicemeeterpro"
@@ -68,17 +71,6 @@ function Set-ProcessAffinity {
         Write-Error "设置进程($Name)cpu核心($CpuCoreIndex)隔离失败: $_"
     }    
 }
-
-# 获取管理员权限
-function Get-AdministratorPrivilege {
-    # 需要管理员权限运行 
-    if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        Start-Process PowerShell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs 
-        exit 
-    }
-}
-
-Get-AdministratorPrivilege
 
 # 判断cpu核心数是否支持设置核心隔离
 $cpuCoreCount = (Get-WmiObject Win32_ComputerSystem).NumberOfLogicalProcessors
