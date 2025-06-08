@@ -72,6 +72,18 @@ function Set-ProcessAffinity {
     }    
 }
 
+
+# 获取管理员权限
+function Get-AdministratorPrivilege {
+    # 需要管理员权限运行 
+    if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        Start-Process PowerShell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs 
+        exit 
+    }
+}
+
+Get-AdministratorPrivilege
+
 # 判断cpu核心数是否支持设置核心隔离
 $cpuCoreCount = (Get-WmiObject Win32_ComputerSystem).NumberOfLogicalProcessors
 Write-Host  "cpu核心数: $cpuCoreCount"
